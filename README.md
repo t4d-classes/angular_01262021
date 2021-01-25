@@ -1,4 +1,4 @@
-# Welcome to React with JavaScript class!
+# Welcome to the Angular class!
 
 ![DevelopIntelligence Logo](images/developintelligence-logo.jpg "DevelopIntelligence Logo")
 
