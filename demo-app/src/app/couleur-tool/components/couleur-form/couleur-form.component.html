@@ -1,0 +1,17 @@
+<form [formGroup]="couleurForm">
+
+  <div>
+    <label for="couleur-name-input">Couleur Name:</label>
+    <input id="couleur-name-input" type="text"
+      formControlName="name" />
+  </div>
+
+  <div>
+    <label for="couleur-hexcode-input">Couleur Hexcode:</label>
+    <input id="couleur-hexcode-input" type="text"
+      formControlName="hexcode" />
+  </div>
+
+  <button type="button" (click)="doSubmitCouleur()">Add Couleur</button>
+
+</form>

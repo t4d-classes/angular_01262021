@@ -22,4 +22,20 @@ export class CouleurHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addCouleur(couleur: Couleur) {
+                       // array literal syntax
+    this.couleurList = [
+      // array spread operator
+      ...this.couleurList,
+      // object literal syntax
+      {
+        // object spread operator
+        ...couleur, // copy the name and hexcode to a new object
+                    // argument spread operator
+        id: Math.max(...this.couleurList.map(c => c.id), 0) + 1, // calculate the id
+      },
+    ];
+
+  }
+
 }
