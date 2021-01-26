@@ -1,3 +1,8 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
-<app-couleur-list [couleurs]="couleurList"></app-couleur-list>
-<app-couleur-form (submitCouleur)="addCouleur($event)"></app-couleur-form>
+<app-couleur-list
+  [couleurs]="couleurList"
+  (removeCouleur)="removeCouleur($event)">
+</app-couleur-list>
+<app-couleur-form
+  (submitCouleur)="addCouleur($event)"
+  buttonText="Add Couleur"></app-couleur-form>

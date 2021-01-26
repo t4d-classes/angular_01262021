@@ -22,6 +22,10 @@ export class CouleurHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  removeCouleur(couleurId: number) {
+    this.couleurList = this.couleurList.filter(c => c.id !== couleurId);
+  }
+
   addCouleur(couleur: Couleur) {
                        // array literal syntax
     this.couleurList = [

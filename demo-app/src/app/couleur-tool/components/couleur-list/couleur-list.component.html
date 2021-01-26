@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let couleur of couleurs">
     {{couleur.name}} {{couleur.hexcode}}
+    <button type="button" (click)="doRemoveCouleur(couleur.id)">X</button>
   </li>
 </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Couleur } from '../../models/Couleur';
 
@@ -12,9 +12,16 @@ export class CouleurListComponent implements OnInit {
   @Input()
   couleurs: Couleur[] = [];
 
+  @Output()
+  removeCouleur = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  doRemoveCouleur(couleurId: number) {
+    this.removeCouleur.emit(couleurId);
   }
 
 }

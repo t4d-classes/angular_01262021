@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { Couleur } from '../../models/Couleur';
@@ -11,6 +11,9 @@ import { Couleur } from '../../models/Couleur';
 export class CouleurFormComponent implements OnInit {
 
   couleurForm!: FormGroup;
+
+  @Input()
+  buttonText = 'Submit Couleur';
 
   @Output()
   submitCouleur = new EventEmitter<Couleur>();
