@@ -14,4 +14,4 @@
 
 4. Replace the `SOME_HEADER_TEXT` with the value passed in from the couleur tool component.
 
-5. Ensure it works!
+5. Ensure it works! Bon chance!

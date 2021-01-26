@@ -9,6 +9,8 @@ import { Couleur } from '../../models/Couleur';
 })
 export class CouleurHomeComponent implements OnInit {
 
+  headerText = 'Couleur Home';
+
   couleurList: Couleur[] = [
     { id: 1, name: 'rouge', hexcode: 'FF0000' },
     { id: 2, name: 'vert', hexcode: '00FF00'},
