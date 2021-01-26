@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy  } from '@angular/core';
 
 import { Couleur } from '../../models/Couleur';
 
 @Component({
   selector: 'app-couleur-list',
   templateUrl: './couleur-list.component.html',
-  styleUrls: ['./couleur-list.component.css']
+  styleUrls: ['./couleur-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CouleurListComponent implements OnInit {
 
