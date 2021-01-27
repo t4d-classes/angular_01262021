@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 
 import { Couleur, NewCouleur } from '../../models/Couleur';
 import { CouleursService } from '../../services/couleurs.service';
@@ -28,27 +29,17 @@ export class CouleurHomeComponent implements OnInit {
   }
 
   removeCouleur(couleurId: number) {
-    this.couleurList = this.couleurList.filter(c => c.id !== couleurId);
+    this.couleursSvc.remove(couleurId).subscribe(() => {
+      this.refreshCouleurs();
+    });
   }
 
   addCouleur(couleur: NewCouleur) {
-    //                    // array literal syntax
-    // this.couleurList = [
-    //   // array spread operator
-    //   ...this.couleurList,
-    //   // object literal syntax
-    //   {
-    //     // object spread operator
-    //     ...couleur, // copy the name and hexcode to a new object
-    //                 // argument spread operator
-    //     id: Math.max(...this.couleurList.map(c => c.id), 0) + 1, // calculate the id
-    //   },
-    // ];
-
-    this.couleursSvc.append(couleur).subscribe(() => {
-      this.refreshCouleurs();
-    });
-
+    this.couleursSvc.append(couleur)
+      .pipe(switchMap(() => this.couleursSvc.all()))
+      .subscribe((couleurs) => {
+        this.couleurList = couleurs;
+      });
   }
 
 }

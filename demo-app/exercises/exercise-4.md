@@ -12,4 +12,6 @@ Would delete a couleur with an id of 2
 
 3. Update the Couleur Home to use the new remove method of the couleurs service when doing a remove. Be sure to refresh the couleur list after the remove!
 
-4. Ensure it works!
+4. Upgrade the remove to use pipe like we did for append.
+
+5. Ensure it works!
