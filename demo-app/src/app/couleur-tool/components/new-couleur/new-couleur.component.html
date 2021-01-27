@@ -1,0 +1,9 @@
+<app-tool-header headerText="New Couleur Form"></app-tool-header>
+
+<div *ngIf="errorMessage">
+  Error: {{errorMessage}}
+</div>
+
+<app-couleur-form
+  (submitCouleur)="addCouleur($event)"
+  buttonText="Add Couleur"></app-couleur-form>

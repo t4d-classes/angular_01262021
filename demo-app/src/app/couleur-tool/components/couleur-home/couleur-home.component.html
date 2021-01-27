@@ -1,4 +1,4 @@
-<app-tool-header [headerText]="headerText"></app-tool-header>
+<app-tool-header headerText="Couleur List"></app-tool-header>
 
 <div *ngIf="errorMessage">
   Error: {{errorMessage}}
@@ -8,6 +8,3 @@
   [couleurs]="couleurList"
   (removeCouleur)="removeCouleur($event)">
 </app-couleur-list>
-<app-couleur-form
-  (submitCouleur)="addCouleur($event)"
-  buttonText="Add Couleur"></app-couleur-form>

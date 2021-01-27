@@ -11,8 +11,6 @@ import { CouleursService } from '../../services/couleurs.service';
 })
 export class CouleurHomeComponent implements OnInit {
 
-  headerText = 'Couleur Home';
-
   errorMessage = '';
 
   // state
@@ -31,12 +29,6 @@ export class CouleurHomeComponent implements OnInit {
   removeCouleur(couleurId: number) {
 
     this.couleursSvc.remove(couleurId)
-      .pipe(switchMap(() => this.couleursSvc.all()))
-      .subscribe(this.createRefreshSubscriber());
-  }
-
-  addCouleur(couleur: NewCouleur) {
-    this.couleursSvc.append(couleur)
       .pipe(switchMap(() => this.couleursSvc.all()))
       .subscribe(this.createRefreshSubscriber());
   }
