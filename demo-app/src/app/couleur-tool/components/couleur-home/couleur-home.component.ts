@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Couleur } from '../../models/Couleur';
+import { CouleursService } from '../../services/couleurs.service';
 
 @Component({
   selector: 'app-couleur-home',
@@ -12,15 +13,18 @@ export class CouleurHomeComponent implements OnInit {
   headerText = 'Couleur Home';
 
   // state
-  couleurList: Couleur[] = [
-    { id: 1, name: 'rouge', hexcode: 'FF0000' },
-    { id: 2, name: 'vert', hexcode: '00FF00'},
-    { id: 3, name: 'bleu', hexcode: '0000FF' },
-  ];
+  couleurList: Couleur[] = [];
 
-  constructor() { }
+  constructor(private couleursSvc: CouleursService) { }
 
   ngOnInit(): void {
+    this.refreshCouleurs();
+  }
+
+  refreshCouleurs() {
+    this.couleursSvc.all().subscribe((couleurs) => {
+      this.couleurList = couleurs;
+    });
   }
 
   removeCouleur(couleurId: number) {
