@@ -13,6 +13,8 @@ export class CouleurHomeComponent implements OnInit {
 
   headerText = 'Couleur Home';
 
+  errorMessage = '';
+
   // state
   couleurList: Couleur[] = [];
 
@@ -23,23 +25,35 @@ export class CouleurHomeComponent implements OnInit {
   }
 
   refreshCouleurs() {
-    this.couleursSvc.all().subscribe((couleurs) => {
-      this.couleurList = couleurs;
-    });
+    this.couleursSvc.all().subscribe(this.createRefreshSubscriber());
   }
 
   removeCouleur(couleurId: number) {
-    this.couleursSvc.remove(couleurId).subscribe(() => {
-      this.refreshCouleurs();
-    });
+
+    this.couleursSvc.remove(couleurId)
+      .pipe(switchMap(() => this.couleursSvc.all()))
+      .subscribe(this.createRefreshSubscriber());
   }
 
   addCouleur(couleur: NewCouleur) {
     this.couleursSvc.append(couleur)
       .pipe(switchMap(() => this.couleursSvc.all()))
-      .subscribe((couleurs) => {
-        this.couleurList = couleurs;
-      });
+      .subscribe(this.createRefreshSubscriber());
   }
 
+  private createRefreshSubscriber() {
+    return {
+      next: (couleurs: Couleur[]) => {
+        this.couleurList = couleurs;
+        this.errorMessage = '';
+      },
+      error: (err: any) => {
+        console.log(err);
+        this.errorMessage = 'Call to the REST API failed';
+      },
+      complete: () => {
+        console.log('the observable completed');
+      }
+    };    
+  }
 }

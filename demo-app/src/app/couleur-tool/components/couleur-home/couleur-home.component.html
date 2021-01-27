@@ -1,4 +1,9 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
+
+<div *ngIf="errorMessage">
+  Error: {{errorMessage}}
+</div>
+
 <app-couleur-list
   [couleurs]="couleurList"
   (removeCouleur)="removeCouleur($event)">
