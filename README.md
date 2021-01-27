@@ -68,12 +68,14 @@ npm install -D json-server npm-run-all
 
 ```json
 "scripts": {
+  "ng": "ng",
   "start": "run-p web rest",
-  "web": "react-scripts start",
+  "web": "ng serve",
   "rest": "json-server --port 3060 ./db.json",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
+  "build": "ng build",
+  "test": "ng test",
+  "lint": "ng lint",
+  "e2e": "ng e2e"
 },
 ```
 
