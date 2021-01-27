@@ -55,6 +55,7 @@ describe('CarFormComponent', () => {
     submitButton.click();
 
     // car should be emitted
+    // this is not comparing object references, this is comparing property values
     expect(spy).toHaveBeenCalledWith(inputCar);
 
     // car form should be reset
